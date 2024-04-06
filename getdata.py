@@ -30,6 +30,7 @@ myobj = {
 
 # posts the object to api 
 response = requests.post(api_url, headers=headers, json=myobj)
+response = requests.put(api_url, headers=headers, data=json.dumps(myobj))
 # grabs a object from api
 response = requests.get(api_url, headers=headers)
 # converts object to json
