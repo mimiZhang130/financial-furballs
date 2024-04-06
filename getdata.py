@@ -1,8 +1,11 @@
 import requests
 from flask import Flask, render_template
 
+app_id = 3
+id = 1
+
 # set api_url and api_token
-api_url = 'https://062l8wn0w126.kintone.com/k/v1/record.json?app=3&id=1'
+api_url = f'https://062l8wn0w126.kintone.com/k/v1/record.json?app={app_id}&id={id}'
 api_token = 'uacLMXhr5VTtpTuo1oG6LTXACDaVhF6dIOz8nxuk'
 headers = {
     "X-Cybozu-API-Token": api_token
@@ -10,8 +13,6 @@ headers = {
 
 # test object for posting data
 myobj = {
-    "app": 3,
-    "id": 1,
     "record": {
         "Table": {
             "value": [
