@@ -1,0 +1,42 @@
+.catCare.catCare {
+  left: 5.0314%;
+  right: 54.717%;
+  top: 5.7143%;
+  bottom: 2.8571%;
+  width: initial;
+  height: initial;
+}
+.root {
+  position: absolute;
+  left: 449px;
+  top: 46px;
+  width: 159px;
+  height: 70px;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.catCares {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 23px;
+  background-color: #ffc4c4;
+}
+._76 {
+  color: #99582a;
+  font-size: 36px;
+  font-weight: bold;
+  font-family: Nunito, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 50.9434%;
+  right: 14.4654%;
+  top: 18.5714%;
+  bottom: 11.4286%;
+  width: min-content;
+  height: min-content;
+  white-space: nowrap;
+  flex-direction: column;
+}
