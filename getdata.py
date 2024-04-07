@@ -49,9 +49,9 @@ def getuserinfo(user_id):
    res = response.json()
    print(res)
    print(actual_values)
-   print(goal_values)
-   print(income)
-   print(cat_values)
+#    print(goal_values)
+#    print(income)
+#    print(cat_values)
 
 
 def update_actual_values(user_id, goal_values):
