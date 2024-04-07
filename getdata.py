@@ -2,7 +2,6 @@ import requests
 from flask import Flask, request, render_template
 import json
 
-global user_id
 def check_password(input_username, input_password):
    # get username and password from file
    api_token = 'EVOtazCLFGxS9DjFFcFYQRIcY7bXB73jLj6T4EyI'
@@ -258,7 +257,7 @@ def update_actual():
             savings_actual = 0
             wants_actual = 0
             needs_actual = int(added_money)
-        return update_actual_values(user_id, [savings_actual, wants_actual, needs_actual])  
+        return update_actual_values(1, [savings_actual, wants_actual, needs_actual])  
     return render_template('dashboard.html')
 
 # run app on port 5000
