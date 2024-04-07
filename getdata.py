@@ -2,7 +2,6 @@ import requests
 from flask import Flask, render_template
 import json
 def check_password(input_username, input_password):
-    print("he")
     # get username and password from file
     api_token = 'EVOtazCLFGxS9DjFFcFYQRIcY7bXB73jLj6T4EyI'
     api_url = 'https://062l8wn0w126.kintone.com/k/v1/record.json?app=5&id=6'
