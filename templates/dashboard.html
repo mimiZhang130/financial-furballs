@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>Login</title>
+    </head>
+    <body>
+        <p>
+            hello {{actual_values}}
+        </p>
+        <form action="{{ url_for('update_actual')}}" method="post">
+            <label for="savings_actual">Savings:</label>
+            <input type="text" id="savings" name="s_actual" placeholder="savings_actual">
+            <label for="wants_actual">Wants:</label>
+            <input type="text" id="wants" name="w_actual" placeholder="wants_actual">
+            <label for="needs_actual">Needs:</label>
+            <input type="text" id="needs" name="n_actual" placeholder="needs_actual">
+            <button type="submit">Submit</button>
+        </form>
+    </body>
+</html>
