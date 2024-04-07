@@ -1,0 +1,190 @@
+.frame.frame {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: initial;
+  height: initial;
+}
+.addButton.addButton {
+  left: 15.0538%;
+  right: 11.5591%;
+  top: 85.8757%;
+  bottom: 4.9435%;
+  width: initial;
+  height: initial;
+}
+.root {
+  position: relative;
+  width: 100%;
+  height: 708px;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.addTransaction {
+  color: #f5f5f5;
+  font-size: 10vh;
+  font-weight: bold;
+  font-family: Nunito, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left:2%;
+  height: min-content;
+  white-space: nowrap;
+  flex-direction: column;
+}
+.x {
+  position: absolute;
+  right: 3%;
+  top: 24px;
+  width: 50px;
+  height: 50px;
+  overflow: visible;
+}
+.icon {
+  width: 100%;
+  height: 100%;
+}
+.note {
+  color: #fff;
+  font-size: 45px;
+  font-weight: bold;
+  font-family: Nunito, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 4.4355%;
+  right: 81.0484%;
+  top: 17.0904%;
+  bottom: 73.7288%;
+  width: min-content;
+  height: min-content;
+  white-space: nowrap;
+  flex-direction: column;
+}
+.noteBox {
+  position: absolute;
+  left: 23%;
+  right: 6.0484%;
+  top: 17.2316%;
+  bottom: 73.8701%;
+  border-radius: 12px;
+  background-color: #ffeaeafc;
+}
+.input {
+  position: absolute;
+  border:none;
+  font-weight: bold;
+  font-family: Nunito, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  padding: 12;
+  margin: 10;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  font-size: 45px;
+  color: hsl(0, 0%, 39%);
+  background-color: #ffeaeafc;
+}
+
+.input:focus {
+  outline-style: none;
+}
+
+.amount {
+  color: #fff;
+  font-size: 48px;
+  font-weight: bold;
+  font-family: Nunito, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 4.4355%;
+  right: 61.1559%;
+  top: 30.6497%;
+  bottom: 60.1695%;
+  width: min-content;
+  height: min-content;
+  white-space: nowrap;
+  flex-direction: column;
+}
+.amountBox {
+  position: absolute;
+  left: 23%;
+  right: 6.0484%;
+  top: 30.791%;
+  bottom: 60.3107%;
+  border-radius: 12px;
+  background-color: #ffeaeafc;
+}
+.type {
+  color: #fff;
+  font-size: 48px;
+  font-weight: bold;
+  font-family: Nunito, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 4.4355%;
+  right: 81.1828%;
+  top: 44.4915%;
+  bottom: 46.3277%;
+  width: min-content;
+  height: min-content;
+  white-space: nowrap;
+  flex-direction: column;
+}
+.amountBox2 {
+  position: absolute;
+  left: 22.5806%;
+  right: 6.0484%;
+  top: 44.6328%;
+  bottom: 46.4689%;
+  border-radius: 12px;
+  background-color: #ffeaeafc;
+}
+  
+.polygon1 {
+  position: absolute;
+  left: 86.1559%;
+  right: 7.1237%;
+  top: 45.0565%;
+  bottom: 47.8814%;
+  overflow: visible;
+  cursor: pointer; /* Indicates the element is clickable */
+}
+
+.icon2 {
+  width: 100%;
+  height: 100%;
+}
+
+/* Add styles specific for the dropdown menu */
+.dropdownMenu {
+  display: none; /* Hidden by default */
+  position: absolute;
+  top: 50%; /* Adjust if necessary */
+  left: 50%;
+  z-index: 100;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  width: 200px; /* Set width as required */
+}
+
+/* When dropdown is active, we display it */
+.active + .dropdownMenu {
+  display: block;
+}
+
+/* Style for dropdown items */
+.dropdownMenu li {
+  padding: 10px;
+  border-bottom: 1px solid #dddddd;
+}
+
+.dropdownMenu li:last-child {
+  border-bottom: none;
+}
+
+.dropdownMenu li:hover {
+  background-color: #f5f5f5;
+}
