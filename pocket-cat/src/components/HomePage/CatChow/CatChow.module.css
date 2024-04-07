@@ -1,0 +1,44 @@
+.root {
+  position: relative;
+  width: 148px;
+  height: 70px;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.catChows {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 23px;
+  background-color: #ffc4c4;
+}
+.catChows2 {
+  position: absolute;
+  left: 18px;
+  top: 11.5878px;
+  width: 59.3779px;
+  height: 44.4128px;
+  overflow: visible;
+}
+.icon {
+  width: 100%;
+  height: 100%;
+}
+._65 {
+  color: #99582a;
+  font-size: 36px;
+  font-weight: bold;
+  font-family: Nunito, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 55.4054%;
+  right: 7.4324%;
+  top: 17.1429%;
+  bottom: 12.8571%;
+  width: min-content;
+  height: min-content;
+  white-space: nowrap;
+  flex-direction: column;
+}

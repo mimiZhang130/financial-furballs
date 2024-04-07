@@ -1,0 +1,69 @@
+.root {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #ffeaea;
+  overflow: hidden;
+}
+.outerFrame {
+  position: absolute;
+  left: 15vw;
+  top: 25vh;
+  width: 70vw;
+  height: 74.6vh;
+  outline: solid 6px #99582a;
+  outline-offset: -6px;
+  border-radius: 54px;
+  background-color: #99582a7a;
+}
+.innerFrame {
+  position: absolute;
+  left: 16vw;
+  top: 27vh;
+  width: 68vw;
+  height: 70.6vh;
+  outline: solid 7px #99582a;
+  outline-offset: -7px;
+  border-radius: 44px;
+  background-color: #f1ebe4;
+}
+.mimiSPocketCats {
+  /* Existing styles */
+  font-size: 64px;
+  font-weight: bold;
+  font-family: Nunito, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 50%;
+  top: 124px;
+  width: min-content;
+  height: min-content;
+  white-space: nowrap;
+  flex-direction: column;
+  transform: translateX(-50%);
+
+  /* New styles for gradient */
+  background: linear-gradient(to right, #FF8A00, #E52E71); /* Example gradient colors */
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent; /* Makes the text take the color of the background */
+  display: inline; /* May need to adjust this based on your layout */
+}
+
+.bar {
+  position: absolute;
+  left: 16.5vw;
+  top: 1vh;
+  width: min-content;
+  height: min-content;
+  align-items: center;
+  gap: 73px;
+}
+.bar2 {
+  width: min-content;
+  height: min-content;
+  align-items: flex-start;
+  gap: 59px;
+}

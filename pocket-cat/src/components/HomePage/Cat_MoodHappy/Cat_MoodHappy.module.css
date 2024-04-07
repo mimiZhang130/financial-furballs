@@ -1,0 +1,23 @@
+.body.body {
+  right: 0;
+  bottom: -12.5%;
+  width: initial;
+  height: initial;
+}
+.face.face {
+  left: 18.75%;
+  right: 18.75%;
+  top: 25%;
+  bottom: 53.125%;
+  width: initial;
+  height: initial;
+}
+.root {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 32px;
+  height: 32px;
+  flex-direction: column;
+  align-items: flex-start;
+}
