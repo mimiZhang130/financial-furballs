@@ -54,41 +54,31 @@ def getuserinfo(user_id):
 #    print(cat_values)
 
 
-def update_actual_values(user_id, goal_values):
-   app_id = 3
-   # set api_url and api_token
-   api_url = f'https://062l8wn0w126.kintone.com/k/v1/record.json?app={app_id}&id={user_id}'
-   api_token = 'uacLMXhr5VTtpTuo1oG6LTXACDaVhF6dIOz8nxuk'
-   headers = {
-       "X-Cybozu-API-Token": api_token
-   }
-   print(f"goalvalues: {user_id}")
+def update_income(user_id, income):
+    app_id = 3
+    # set api_url and api_token
+    api_url = f'https://062l8wn0w126.kintone.com/k/v1/record.json'
+    api_token = 'uacLMXhr5VTtpTuo1oG6LTXACDaVhF6dIOz8nxuk'
+    headers = {
+        "X-Cybozu-API-Token": api_token,
+        "Content-Type": "application/json"  # Add this line
+    }
+    print(f"goalvalues: {user_id}")
    # # test object for posting data
-   myobj = {
-       'record': {
-           'actuals': {
-               'value':[{
-                   'value': {
-                       'savings_actual': {
-                           'value': 50
-                       },
-                       "wants_actual": {
-                           "value": 30
-                       },
-                       "needs_actual": {
-                           "value": 40
-                       }
-                   }
-               }]
-           }
-       }
-   }
-
+    myobj = {
+        'app': app_id,
+        'id': user_id,
+        'record': {
+            'Income':{
+                'value': income
+            }
+            # Other fields...
+        }
+    }
 
    # posts the object to api
-   response = requests.put(api_url, headers=headers, data=json.dumps(myobj))
-
-
+    response = requests.put(api_url, headers=headers, data=json.dumps(myobj))
+    print(response.text)
 # set up flask
 app = Flask(__name__)
 # set up route to home
@@ -100,7 +90,7 @@ def index():
    user_id = check_password("bob", "password")
    print(user_id)
    if(user_id != 0):
-       update_actual_values(user_id, [50, 30, 100])
+       update_income(user_id, 10000)
        getuserinfo(user_id)
    # render index.html with name variable
    return render_template('index.html', name=name)
