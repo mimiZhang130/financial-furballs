@@ -2,7 +2,7 @@ import requests
 from flask import Flask, request, render_template
 import json
 
-global actual_values, goal_values, income, cat_values
+global user_id
 def check_password(input_username, input_password):
    # get username and password from file
    api_token = 'EVOtazCLFGxS9DjFFcFYQRIcY7bXB73jLj6T4EyI'
@@ -12,7 +12,6 @@ def check_password(input_username, input_password):
    headers = {
        "X-Cybozu-API-Token": api_token
    }
-
 
    response = requests.get(api_url, headers=headers)
    # converts object to json
@@ -28,8 +27,7 @@ def check_password(input_username, input_password):
            else:
                return 0
    return 0
-
-
+    
 def getuserinfo(user_id):
     app_id = 3
     # set api_url and api_token
@@ -45,16 +43,71 @@ def getuserinfo(user_id):
     goal_values = response.json()['record']['goals']['value']
     income = response.json()['record']['Income']['value']
     cat_values = response.json()['record']['cat_values']['value']
-        # converts object to json
-    res = response.json()
-    # print(res)
-    # print(actual_values)
-    # print(goal_values)
-    # print(income)
-    # print(cat_values)
+    # converts object to json
+    print(response.json())
+    print(actual_values)
+    print(goal_values)
+    print(income)
+    print(cat_values)
 
     return [actual_values, goal_values, income, cat_values]
    
+def calculate_cat_values(user_id):
+    app_id = 3
+    # set api_url and api_token
+    api_url = f'https://062l8wn0w126.kintone.com/k/v1/record.json'
+    api_token = 'uacLMXhr5VTtpTuo1oG6LTXACDaVhF6dIOz8nxuk'
+    [actual_values, goal_values, income, cat_values] = getuserinfo(user_id)
+    num_of_toys = int(cat_values[0]['value']['toys']['value'])
+    num_of_cat_coins = int(cat_values[0]['value']['cat_coins']['value'])
+    num_of_food = int(cat_values[0]['value']['food']['value'])
+    diff_toys = int(actual_values[0]['value']['wants_actual']['value']) - int(goal_values[0]['value']['wants_goal']['value'])
+    diff_cat_coins = int(actual_values[0]['value']['savings_actual']['value']) - int(goal_values[0]['value']['savings_goal']['value'])
+    diff_food = int(actual_values[0]['value']['needs_actual']['value']) - int(goal_values[0]['value']['needs_goal']['value'])
+    margin_of_error = 3
+    
+    if abs(diff_toys) > margin_of_error:
+        num_of_toys = 3 + round(diff_toys/margin_of_error)
+    else:
+        num_of_toys = 3
+    if abs(diff_cat_coins) > margin_of_error:
+        num_of_cat_coins = 50 + round(diff_cat_coins/margin_of_error)
+    else:
+        num_of_cat_coins = 50
+    if abs(diff_food) > margin_of_error:
+        num_of_food = 9 + round(diff_food/margin_of_error)
+    else:
+        num_of_food = 9
+    myobj = {
+        'app': app_id,
+        'id': user_id,
+        'record': {
+            'cat_values':{
+                'value':[{
+                    'value':{
+                        'toys':{
+                            'value': num_of_toys
+                        },
+                        'cat_coins':{
+                            'value': num_of_cat_coins
+                        },
+                        'food':{
+                            'value': num_of_food
+                        }
+                    }
+                }]
+            }
+        }
+    }
+    headers = {
+        "X-Cybozu-API-Token": api_token,
+        "Content-Type": "application/json"  # Add this line
+    }
+    print(num_of_food)
+    print(num_of_cat_coins)
+    print(num_of_toys)
+    response = requests.put(api_url, headers=headers, data=json.dumps(myobj))
+    print(response.json())
 
 def update_income(user_id, income):
     app_id = 3
@@ -96,7 +149,7 @@ def update_actual_values(user_id, input_actual_values):
     for value in actual_values:
         original_values = [int(value['value']['savings_actual']['value']), int(value['value']['wants_actual']['value']), int(value['value']['needs_actual']['value']), int(value['value']['total_money']['value'])]
     
-    total_money = int(original_values[3])
+    total_money = int(round(original_values[3]))
     daily_income = int(income)/30
 
     savings_money = int(original_values[0]) * total_money / 100
@@ -115,7 +168,7 @@ def update_actual_values(user_id, input_actual_values):
     wants_money += int(input_actual_values[1])
     needs_money += int(input_actual_values[2])
     
-    total_money = savings_money + wants_money + needs_money
+    total_money = round(savings_money + wants_money + needs_money)
     # recalculate percentages
     savings_money = round(savings_money / total_money * 100)
     wants_money = round(wants_money / total_money * 100)
@@ -155,6 +208,7 @@ def update_actual_values(user_id, input_actual_values):
 
    # posts the object to api
     response = requests.put(api_url, headers=headers, data=json.dumps(myobj))
+    calculate_cat_values(user_id)
     return [savings_money, wants_money, needs_money]
     
 # set up flask
@@ -183,6 +237,7 @@ def dashboard():
        if user_id == 0:
            return "Invalid username or password"
        [actual_values, goal_values, income, cat_values] = getuserinfo(user_id)
+       calculate_cat_values(user_id)
     return render_template("dashboard.html", actual_values=actual_values, goal_values=goal_values, income=income, cat_values=cat_values)
 
 @app.route('/update_actual', methods=["POST"])
@@ -203,7 +258,7 @@ def update_actual():
             savings_actual = 0
             wants_actual = 0
             needs_actual = int(added_money)
-        return update_actual_values(1, [savings_actual, wants_actual, needs_actual])  
+        return update_actual_values(user_id, [savings_actual, wants_actual, needs_actual])  
     return render_template('dashboard.html')
 
 # run app on port 5000
