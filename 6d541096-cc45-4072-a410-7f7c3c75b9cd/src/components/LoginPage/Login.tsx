@@ -4,6 +4,7 @@ import type { FC } from 'react';
 
 import resets from '../_resets.module.css';
 import { AddButton } from './AddButton/AddButton';
+import { AddSigninButton } from './SigninButton/SigninButton';
 import { Frame2 } from '../AddTransactionPage/Frame2/Frame2';
 import classes from './Login.module.css';
 
@@ -42,6 +43,7 @@ export const Login: FC<Props> = memo(() => {
         <InputBox />
       </div>
       <AddButton className={classes.addButton} />
+      <AddSigninButton className={classes.SigninButton} />
     </div>
   );
 });
