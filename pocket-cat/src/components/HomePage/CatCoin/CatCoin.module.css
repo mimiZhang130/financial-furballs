@@ -1,7 +1,5 @@
 .root {
-  position: absolute;
-  left: 49px;
-  top: 46px;
+  position: relative;
   width: 134px;
   height: 70px;
   flex-direction: column;

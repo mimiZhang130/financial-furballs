@@ -1,7 +1,7 @@
 .mouth.mouth {
-  left: 30%;
+  left: 37%;
   right: 30%;
-  top: 28.5714%;
+  top: 40%;
   bottom: 0;
   width: initial;
   height: initial;
@@ -17,10 +17,10 @@
 }
 .eyeLeft {
   position: absolute;
-  left: 0;
-  right: 80%;
+  left: 8%;
+  right: 73%;
   top: 0;
-  bottom: 42.8571%;
+  bottom: 20%;
   overflow: visible;
 }
 .icon {
@@ -29,10 +29,10 @@
 }
 .eyeRight {
   position: absolute;
-  left: 80%;
-  right: 0;
+  left: 73%;
+  right: 8%;
   top: 0;
-  bottom: 42.8571%;
+  bottom: 20%;
   overflow: visible;
 }
 .icon2 {

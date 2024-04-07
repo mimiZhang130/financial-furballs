@@ -13,7 +13,7 @@ export const CatCare: FC<Props> = memo(function CatCare(props = {}) {
   return (
     <div className={`${resets.clapyResets} ${classes.root}`}>
       <div className={classes.catCares}></div>
-      <div className={classes._76}>7/6</div>
+      <div className={classes._45}>4/5</div>
       <CatCare2 className={classes.catCare} />
     </div>
   );

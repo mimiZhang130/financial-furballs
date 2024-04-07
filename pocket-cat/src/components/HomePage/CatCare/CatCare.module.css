@@ -7,9 +7,7 @@
   height: initial;
 }
 .root {
-  position: absolute;
-  left: 449px;
-  top: 46px;
+  position: relative;
   width: 159px;
   height: 70px;
   flex-direction: column;
@@ -24,7 +22,7 @@
   border-radius: 23px;
   background-color: #ffc4c4;
 }
-._76 {
+._45 {
   color: #99582a;
   font-size: 36px;
   font-weight: bold;

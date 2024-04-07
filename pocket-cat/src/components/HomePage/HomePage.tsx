@@ -7,6 +7,7 @@ import { CatChow } from './CatChow/CatChow';
 import { CatCoin } from './CatCoin/CatCoin';
 import { Cats } from './Cats/Cats';
 import classes from './HomePage.module.css';
+import { Logo } from './Logo/Logo';
 import { LogTransaction } from './LogTransaction/LogTransaction';
 import { SettingsButton } from './SettingsButton/SettingsButton';
 
@@ -20,12 +21,17 @@ export const HomePage: FC<Props> = memo(function HomePage(props = {}) {
       <div className={classes.outerFrame}></div>
       <div className={classes.innerFrame}></div>
       <div className={classes.mimiSPocketCats}>Mimi’s Pocket Cats</div>
-      <CatCoin />
-      <CatChow />
-      <CatCare />
       <SettingsButton />
       <LogTransaction />
       <Cats />
+      <div className={classes.bar}>
+        <Logo />
+        <div className={classes.bar2}>
+          <CatCoin />
+          <CatChow />
+          <CatCare />
+        </div>
+      </div>
     </div>
   );
 });

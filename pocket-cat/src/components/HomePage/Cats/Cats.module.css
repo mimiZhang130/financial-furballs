@@ -1,7 +1,7 @@
 .pearl.pearl {
   left: 4.0195%;
   right: 74.056%;
-  bottom: 66.2289%;
+  bottom: 61.2289%;
   width: initial;
   height: initial;
 }
@@ -182,7 +182,7 @@
   left: 39.0987%;
   right: 38.9769%;
   top: 0.5629%;
-  bottom: 65.666%;
+  bottom: 61.666%;
   width: initial;
   height: initial;
 }
@@ -246,7 +246,7 @@
   left: 74.056%;
   right: 4.0195%;
   top: 0.5629%;
-  bottom: 65.666%;
+  bottom: 61.666%;
   width: initial;
   height: initial;
 }
@@ -320,8 +320,8 @@
 }
 .root {
   position: absolute;
-  left: 229px;
-  top: 286px;
+  left: 20vw;
+  top: 30vh;
   width: 821px;
   height: 533px;
   flex-direction: column;

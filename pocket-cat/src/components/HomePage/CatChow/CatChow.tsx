@@ -16,7 +16,7 @@ export const CatChow: FC<Props> = memo(function CatChow(props = {}) {
       <div className={classes.catChows2}>
         <CatChowsIcon className={classes.icon} />
       </div>
-      <div className={classes._56}>5/6</div>
+      <div className={classes._65}>6/5</div>
     </div>
   );
 });
