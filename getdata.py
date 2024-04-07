@@ -1,5 +1,5 @@
 import requests
-from flask import Flask, render_template
+from flask import Flask, request, render_template
 import json
 def check_password(input_username, input_password):
    # get username and password from file
@@ -49,9 +49,9 @@ def getuserinfo(user_id):
    res = response.json()
    print(res)
    print(actual_values)
-#    print(goal_values)
-#    print(income)
-#    print(cat_values)
+   print(goal_values)
+   print(income)
+   print(cat_values)
 
 
 def update_income(user_id, income):
@@ -72,7 +72,6 @@ def update_income(user_id, income):
             'Income':{
                 'value': income
             }
-            # Other fields...
         }
     }
 
@@ -95,7 +94,15 @@ def index():
    # render index.html with name variable
    return render_template('index.html', name=name)
 
-
+@app.route('/login', methods=["POST"])
+def login():
+    if request.method == "POST":
+       # getting input with name = fname in HTML form
+       user_name = request.form.get("user")
+       # getting input with name = lname in HTML form 
+       password = request.form.get("pw") 
+       return "hello" + user_name + password
+    return render_template("index.html")
 # run app on port 5000
 if __name__ == '__main__':
    app.run(port=5000,debug=True)
