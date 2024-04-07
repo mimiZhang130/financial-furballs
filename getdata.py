@@ -2,7 +2,6 @@ import requests
 from flask import Flask, render_template
 import json
 def check_password(input_username, input_password):
-    print("he")
     # get username and password from file
     api_token = 'EVOtazCLFGxS9DjFFcFYQRIcY7bXB73jLj6T4EyI'
     api_url = 'https://062l8wn0w126.kintone.com/k/v1/record.json?app=5&id=6'
@@ -26,38 +25,50 @@ def check_password(input_username, input_password):
                 return 0
     return 0
 
-# # set api_url and api_token
-# api_url = f'https://062l8wn0w126.kintone.com/k/v1/record.json?app={app_id}&id={id}'
-# api_token = 'uacLMXhr5VTtpTuo1oG6LTXACDaVhF6dIOz8nxuk'
-# headers = {
-#     "X-Cybozu-API-Token": api_token
-# }
+def getuserinfo(user_id):
+    app_id = 3
+    # set api_url and api_token
+    api_url = f'https://062l8wn0w126.kintone.com/k/v1/record.json?app={app_id}&id={user_id}'
+    api_token = 'uacLMXhr5VTtpTuo1oG6LTXACDaVhF6dIOz8nxuk'
+    headers = {
+        "X-Cybozu-API-Token": api_token
+    }
 
-# # test object for posting data
-# myobj = {
-#     "record": {
-#         "Table": {
-#             "value": [
-#                 {
-#                     "value": {
-#                         "username": {
-#                             "value": "Bob"
-#                         }
-#                     }
-#                 }
-#             ]
-        
-#         }
-#     }
-# }
+    # # test object for posting data
+    # myobj = {
+    #     "record": {
+    #         "Table": {
+    #             "value": [
+    #                 {
+    #                     "value": {
+    #                         "username": {
+    #                             "value": "Bob"
+    #                         }
+    #                     }
+    #                 }
+    #             ]
+            
+    #         }
+    #     }
+    # }
 
-# # posts the object to api 
-# response = requests.put(api_url, headers=headers, data=json.dumps(myobj))
-# # grabs a object from api
-# response = requests.get(api_url, headers=headers)
-# # converts object to json
-# res = response.json()
-# print(res)
+    # # posts the object to api 
+    # response = requests.put(api_url, headers=headers, data=json.dumps(myobj))
+    # grabs a object from api
+    response = requests.get(api_url, headers=headers)
+    # only get record data
+    actual_values = response.json()['record']['actuals']['value']
+    goal_values = response.json()['record']['goals']['value']
+    income = response.json()['record']['Income']['value']
+    cat_values = response.json()['record']['cat_values']['value']
+
+    # converts object to json
+    res = response.json()
+    print(res)
+    print(actual_values)
+    print(goal_values)
+    print(income)
+    print(cat_values)
 
 # set up flask
 app = Flask(__name__)
@@ -67,7 +78,10 @@ def index():
     # create name variable
     # name = res['record']['Table']['value'][0]['value']['username']['value']
     name = "Bob"
-    print(check_password("bob", "password"))
+    user_id = check_password("bob", "password")
+    print(user_id)
+    if(user_id != 0):
+        getuserinfo(user_id)
     # render index.html with name variable
     return render_template('index.html', name=name)
 
